@@ -39,8 +39,8 @@ public class SeniorProjectMapsActivity extends FragmentActivity implements OnMap
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng southAL = new LatLng(30.6955253, -88.1786411);
+        mMap.addMarker(new MarkerOptions().position(southAL).title("Marker for University of South Alabama"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(southAL));
     }
 }
