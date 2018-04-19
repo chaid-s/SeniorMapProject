@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Senior Map Project</string>
-    <string name="title_activity_senior_project_maps">Please Work</string>
+    <string name="title_activity_senior_project_maps">USA Map</string>
+    <string name="title_activity_maps__attempt_1">Maps_Attempt_1</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
