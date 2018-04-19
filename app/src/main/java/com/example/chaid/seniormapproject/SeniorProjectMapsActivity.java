@@ -40,7 +40,7 @@ public class SeniorProjectMapsActivity extends FragmentActivity implements OnMap
 
         // Add a marker in Sydney and move the camera
         LatLng southAL = new LatLng(30.6955253, -88.1786411);
-        mMap.addMarker(new MarkerOptions().position(southAL).title("Marker for University of South Alabama"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(southAL));
+        mMap.addMarker(new MarkerOptions().position(southAL).title("University of South Alabama"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(southAL, 14.f));
     }
 }
