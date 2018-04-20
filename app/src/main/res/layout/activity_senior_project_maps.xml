@@ -18,32 +18,44 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ImageButton
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_alignStart="@id/search"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/left_search_box"
+            android:drawableStart="@drawable/ic_menu_black_24dp"
+            android:elevation="1dp" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textAutoComplete"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginRight="32dp"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:drawableEnd="@drawable/ic_mic_black_24dp"
-                android:drawableStart="@drawable/ic_search_black_24dp"
-                android:background="@drawable/rounded_edges"
-                android:hint="@string/search"
-                android:textSize="18sp"
-                android:textColorHint="@color/searchHint"
-                android:textColor="@color/searchText"
-                android:fontFamily="sans-serif-light"/>
+        <ImageButton
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_alignEnd="@id/search"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/right_search_box"
+            android:drawableStart="@drawable/ic_mic_black_24dp" />
 
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="326dp"
+            android:layout_height="42dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_edges"
+            android:drawableStart="@drawable/ic_search_black_24dp"
+            android:fontFamily="sans-serif-light"
+            android:hint="@string/search"
+            android:inputType="textAutoComplete"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            android:textColor="@color/searchText"
+            android:textColorHint="@color/searchHint"
+            android:textSize="18sp" />
 
-        </LinearLayout>
 
         <Button
             android:id="@+id/button7"
