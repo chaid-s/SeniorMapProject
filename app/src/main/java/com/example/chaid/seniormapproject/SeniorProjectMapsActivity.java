@@ -5,7 +5,12 @@ import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -53,29 +58,73 @@ public class SeniorProjectMapsActivity extends FragmentActivity implements OnMap
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(southAL, 14.f));
     }
 
-    public void onSearch(View view)
-    {
+    public static void fadeInAnimation(final View view, long animationDuration) {
+        Animation fadeIn = new AlphaAnimation(0, 1);
+        fadeIn.setInterpolator(new DecelerateInterpolator());
+        fadeIn.setDuration(animationDuration);
+        fadeIn.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                view.setVisibility(View.VISIBLE);
+            }
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        });
+
+        view.startAnimation(fadeIn);
+    }
+
+    public static void fadeOutAnimation(final View view, long animationDuration) {
+        Animation fadeOut = new AlphaAnimation(1, 0);
+        fadeOut.setInterpolator(new AccelerateInterpolator());
+        fadeOut.setStartOffset(animationDuration);
+        fadeOut.setDuration(animationDuration);
+        fadeOut.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                view.setVisibility(View.INVISIBLE);
+            }
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        });
+
+        view.startAnimation(fadeOut);
+    }
+
+    public void onSearch(View view) {
         EditText location_tf = findViewById(R.id.search);
-        String location = location_tf.getText().toString();
-        List<Address> addressList =null;
-        if(location !=null|| !location.equals(""))
-        {
-            Geocoder geocoder = new Geocoder(this);
-            try{
-                addressList = geocoder.getFromLocationName(location,1);
-
+        TextView sadness_error = findViewById(R.id.errorMeDaddy);
+        if (location_tf.getText() != null) {
+            String location = location_tf.getText().toString();
+            List<Address> addressList = null;
+            if (!location.equals("")) {
+                Geocoder geocoder = new Geocoder(this);
+                try {
+                    addressList = geocoder.getFromLocationName(location, 1);
+                } catch (IOException e) {
+                    CharSequence error = "Error finding '" + location + "'";
+                    sadness_error.setText(error);
+                    fadeInAnimation(sadness_error, 1000);
+                    fadeOutAnimation(sadness_error, 1000);
+                }
+                Address address = addressList.get(0);
+                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                mMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
+                mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
             }
-            catch(IOException e){
-             e.printStackTrace();
-            }
-
-            Address address = addressList.get(0);
-            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
-            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-
+        } else {
+            CharSequence error = "Error Please Enter a Location";
+            sadness_error.setText(error);
+            fadeInAnimation(sadness_error, 1000);
+            fadeOutAnimation(sadness_error, 1000);
         }
-
-
     }
 }

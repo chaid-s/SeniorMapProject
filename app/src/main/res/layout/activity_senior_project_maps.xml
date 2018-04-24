@@ -18,33 +18,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageButton
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_alignStart="@id/search"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/left_search_box"
-            android:drawableStart="@drawable/ic_menu_black_24dp"
-            android:elevation="1dp" />
-
-        <ImageButton
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_alignEnd="@id/search"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/right_search_box"
-            android:drawableStart="@drawable/ic_mic_black_24dp" />
-
         <EditText
             android:id="@+id/search"
             android:layout_width="326dp"
             android:layout_height="42dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="16dp"
+            android:layout_above="@+id/Search"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="-58dp"
             android:background="@drawable/rounded_edges"
             android:drawableStart="@drawable/ic_search_black_24dp"
             android:fontFamily="sans-serif-light"
@@ -66,7 +46,7 @@
             android:layout_marginStart="56dp"
             android:layout_marginTop="58dp"
             android:onClick="onSearch"
-            android:text="Search" />
+            android:text="@string/search" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/floatingActionButton2"
@@ -78,6 +58,7 @@
             android:layout_marginEnd="20dp"
             android:backgroundTint="@color/colorPrimaryDark"
             android:clickable="true"
+            android:focusable="false"
             app:srcCompat="@android:drawable/ic_menu_mylocation" />
 
         <Button
@@ -86,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/Search"
             android:layout_toEndOf="@+id/Search"
-            android:text="Button" />
+            android:text="@string/button" />
 
         <Button
             android:id="@+id/button9"
@@ -94,8 +75,17 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/Search"
             android:layout_toEndOf="@+id/button8"
-            android:text="Button" />
+            android:text="@string/button" />
 
+        <TextView
+            android:id="@+id/errorMeDaddy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            android:background="@drawable/error_back"/>
 
     </RelativeLayout>
 </FrameLayout>
