@@ -110,15 +110,23 @@ public class SeniorProjectMapsActivity extends FragmentActivity implements OnMap
                 try {
                     addressList = geocoder.getFromLocationName(location, 1);
                 } catch (IOException e) {
+                    CharSequence error = "Error";
+                    sadness_error.setText(error);
+                    fadeInAnimation(sadness_error, 1000);
+                    fadeOutAnimation(sadness_error, 1000);
+                }
+                if(addressList.isEmpty()){
                     CharSequence error = "Error finding '" + location + "'";
                     sadness_error.setText(error);
                     fadeInAnimation(sadness_error, 1000);
                     fadeOutAnimation(sadness_error, 1000);
                 }
-                Address address = addressList.get(0);
-                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-                mMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
-                mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                else{
+                    Address address = addressList.get(0);
+                    LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                    mMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                }
             }
         } else {
             CharSequence error = "Error Please Enter a Location";
